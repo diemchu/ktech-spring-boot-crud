@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Student List</h1>
+<!--    저장된 학생 없는 경우-->
+    <div th:if = "${studentList.isEmpty()}">
+        <p>No Students here</p>
+    </div>
+<!--    저장된 학생 있는 경-->
+    <div th:unless = "${studentList.isEmpty()}"
+        th:each = "student : ${studentList}">
+        <p>ID: [[${student.getId()}]]</p>
+        <p>Name: [[${student.getName()}]]</p>
+        <p>Email: [[${student.getEmail()}]]</p>
+        <a th:href ="@{/{id}(id = ${student.getId()})}">Info of [[${student.getName()}]] </a>
+        <br>
+        <a th:href ="@{/{id}/update-view (id = ${student.getId()})}">
+            Update Info
+        </a>
+        <hr>
+    </div>
+    <a href="/create-view">Create</a>
+</body>
+</html>

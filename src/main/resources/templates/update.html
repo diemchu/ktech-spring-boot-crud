@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+    <h1>Update [[${student.toString()}]]</h1>
+    <form th:action="@{/{id}/update (id = ${student.getId()})}" method="post">
+        <label for="name-input">Name: </label>
+        <input type="text" id="name-input" name="name" th:value="${student.getName()}"><br>
+        <br>
+        <label for="email-input">Email: </label>
+        <input type="text" id="email-input" name="email" th:value="${student.getEmail()}"> <br>
+        <br>
+        <input type="submit" value="Update">
+    </form>
+    <br>
+    <a href="/home">Home</a>
+</body>
+</html>
