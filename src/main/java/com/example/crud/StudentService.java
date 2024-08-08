@@ -12,13 +12,19 @@ public class StudentService {
     private Long nextId = 1L;
     private final List<StudentDto> studentDtoList = new ArrayList<>();
     private static  final Logger log = LoggerFactory.getLogger(StudentService.class);
+    private  StudentRepository repository;
+
+    public StudentService(StudentRepository repository) {
+        this.repository = repository;
+    }
+
     public  StudentDto createStudent(
             String name,String email
     ){
         StudentDto newStudent= new StudentDto(nextId,name,email);
         nextId++;
         studentDtoList.add(newStudent);
-        log.info(newStudent.toString());
+        repository.create(newStudent);
         return  newStudent;
     }
     public List<StudentDto> readAllStudents(){

@@ -14,7 +14,6 @@ public class StudentController {
     public StudentController(StudentService service){
         this.service = service;
     }
-
     @GetMapping("create-view")
     public String createView(){
         return  "create.html";
